@@ -72,17 +72,16 @@ class Program
 
                 // Log the request.
                 Log.Debug("""
-
-            {request}
-            """, request);
+                    {request}
+                    """, request);
 
                 // Send the reply.
                 // NOTE: New line is expected after the HTTP response code and the response payload.
                 await clientSocket.SendAsync(Encoding.UTF8.GetBytes("""
-                HTTP/1.1 200 OK
+                    HTTP/1.1 200 OK
 
-                Hello World!
-                """)).ConfigureAwait(false);
+                    Hello World!
+                    """)).ConfigureAwait(false);
 
                 // It's important to close and dispose of the incoming socket.
                 clientSocket.Close();
