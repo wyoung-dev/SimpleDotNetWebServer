@@ -82,12 +82,14 @@ class Program
                     HTTP/1.1 200 OK
 
                     Hello, World!
-                    """)).ConfigureAwait(false);
+                    """))
+                    .ConfigureAwait(false);
 
                 // It's important to close and dispose of the incoming socket.
                 clientSocket.Close();
                 clientSocket.Dispose();
-            }, _);
+            }, _)
+            .ConfigureAwait(false);
         }
     }
 }
