@@ -17,6 +17,7 @@ class Program
         string ipAddress;
         int port;
 
+        // The default URL will be http://127.0.0.1:80/ or http://localhost/
         if (args.Length == 0)
         {
             ipAddress = "127.0.0.1";
