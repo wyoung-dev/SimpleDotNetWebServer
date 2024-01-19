@@ -72,9 +72,8 @@ class Program
 
                 // Log the request.
                 Log.Debug("""
-
-            {request}
-            """, request);
+                    {request}
+                    """, request);
 
                 // Send the reply.
                 // NOTE: New line is expected after the HTTP response code and the response payload.
