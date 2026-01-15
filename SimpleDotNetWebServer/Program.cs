@@ -1,4 +1,4 @@
-﻿using System.Net;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using Serilog;
@@ -47,8 +47,7 @@ class Program
         // Enter a continuous loop to accept incoming connections.
         while (true)
         {
-            var _ = await serverSocket.AcceptAsync()
-                .ConfigureAwait(false);
+            var _ = await serverSocket.AcceptAsync();
 
             // Start a new task for each client.
             await Task.Factory.StartNew(async state =>
@@ -62,10 +61,8 @@ class Program
 
                 do
                 {
-                    bytesRead = await clientSocket.ReceiveAsync(requestBuffer.AsMemory(0, bufferSize))
-                        .ConfigureAwait(false);
-                    await requestStream.WriteAsync(requestBuffer.AsMemory(0, bytesRead))
-                        .ConfigureAwait(false);
+                    bytesRead = await clientSocket.ReceiveAsync(requestBuffer.AsMemory(0, bufferSize));
+                    await requestStream.WriteAsync(requestBuffer.AsMemory(0, bytesRead));
                 }
                 while (bytesRead == bufferSize);
 
@@ -82,14 +79,12 @@ class Program
                     HTTP/1.1 200 OK
 
                     Hello, World!
-                    """))
-                    .ConfigureAwait(false);
+                    """));
 
                 // It's important to close and dispose of the incoming socket.
                 clientSocket.Close();
                 clientSocket.Dispose();
-            }, _)
-            .ConfigureAwait(false);
+            }, _);
         }
     }
 }
